@@ -4,12 +4,14 @@ from src.utils.counter import Counter
 
 class TestCount(unittest.TestCase):
 
-    def test_count_positive(self):
-        self.assertEqual(Counter.count_zeros('ADas@#RSSDCV000000SDAA0AD000ADS'), 6)
-        self.assertEqual(Counter.count_zeros('ASDNOVDfasaVSMAPSPXKSMSPD'), 0)
-        self.assertEqual(Counter.count_zeros('ghddhgbgesafhisufdhsahdlhsdflsahdfjsdfsdfds0sdfsdfsfsd'), 1)
+    def test_count_positive_1(self):
+        self.assertEqual(Counter.count_zeroes('ADas@#RSSDCV000000SDAA0AD000ADS'), 6)
 
-    def test_count_exception(self):
-        self.assertRaises(TypeError, Counter.count_zeros(11521532))
-        self.assertFalse(Counter.count_zeros(1252436345))
+    def test_count_positive_2(self):
+        self.assertEqual(Counter.count_zeroes('ASDNOVDfasaVSMAPSPXKSMSPD'), 0)
 
+    def test_count_positive_3(self):
+        self.assertEqual(Counter.count_zeroes('ghddhgbgesafhisufdhsahdlhsdflsahdfjsdfsdfds0sdfsdfsfsd'), 1)
+
+    def test_count_negative(self):
+        self.assertEqual(Counter.count_zeroes(11521532), '\tNot a string')

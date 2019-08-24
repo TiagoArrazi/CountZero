@@ -1,16 +1,26 @@
-from difflib import SequenceMatcher
-
-
 class Counter:
 
     @classmethod
-    def count_zeros(cls, string):
+    def count_zeroes(cls, string):
+
+        acc_list = list()
+        acc = 0
+
         try:
-            zero_string = ''.join(['0' for i in range(len(string))])
+            for each in string:
+
+                if each == '0':
+                    acc += 1
+                    acc_list.append(acc)
+
+                else:
+                    acc = 0
+
+            return max(acc_list)
+
+        except ValueError:
+            return 0
+
         except TypeError:
-            return None
+            return '\tNot a string'
 
-        matcher = SequenceMatcher(None, string, zero_string)
-        match = matcher.find_longest_match(0, len(string), 0, len(zero_string))
-
-        return match.size
